@@ -1,0 +1,124 @@
+html {
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+header {
+    color: white;
+    animation-name: animation1;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    text-align: center;
+    }
+    @keyframes animation1 {
+        0% {background-color:  rgb(140,146,172);}
+        50% {background-color: rgb(113, 168, 147);} 
+        100% {background-color: rgb(173, 182, 94);}
+    }
+}
+body {
+    box-sizing: border-box;
+    padding: 20px 20px;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+section {
+    display: inline-block;
+}
+h2 {
+    text-align: center;
+    color: rgb(113, 168, 147);
+}
+h3 {
+    color: rgb(140,146,172);
+}
+
+
+
+#grid-floats .grid-item {
+    box-sizing: border-box;
+    float: left;
+    width: calc(50% - 1em);
+    margin: 1em 0.5em;
+    height: 600px;
+    border: 1em solid whitesmoke;
+    text-align: center;
+    list-style-type: none;
+}
+
+#grid-floats .grid-item:nth-child(1) {
+    width: 100%;
+}
+
+img {
+    width: 100%;
+}
+
+@media (min-width: 480px) {
+    #grid-floats .grid-item {
+        width: calc(calc(100% / 3) - 1em);
+        margin: 1em 0.5em;
+    }
+    #grid-floats .grid-item:nth-child(1),
+    #grid-floats .grid-item:nth-child(2) {
+        width: calc(50% - 1em);
+    }
+}
+
+@media (min-width: 768px) {
+    #grid-floats .grid-item {
+        width: calc(25% - 1em);
+        margin: 1em 0.5em;
+    }
+    #grid-floats .grid-item:nth-child(2) {
+        width: calc(25% - 1em);
+    }
+    #grid-floats .grid-item:nth-child(1) {
+        width: calc(50% - 1em);
+    }
+}
+
+#grid-flex {
+    display: flex;
+    flex-direction: flex-start;
+    flex-wrap: wrap;
+}
+
+#grid-flex .grid-item {
+    border: 1px solid rgb(140,146,172);
+    width: calc(50% - 1em);
+    margin: 1em 0.5em;
+    text-align: center;
+    list-style-type: none;
+    border: 1em solid whitesmoke;
+}
+
+#grid-flex .grid-item:nth-child(1) {
+    width: 100%;
+}
+
+@media (min-width: 480px) {
+    #grid-flex .grid-item {
+        width: calc(calc(100% / 3) - 1em);
+        margin: 1em 0.5em;
+    }
+    #grid-flex .grid-item:nth-child(1),
+    #grid-flex .grid-item:nth-child(2) {
+        width: calc(50% - 1em);
+    }
+}
+
+@media (min-width: 768px) {
+    #grid-flex .grid-item {
+        width: calc(25% - 1em);
+        margin: 1em 0.5em;
+    }
+    #grid-flex .grid-item:nth-child(1) {
+        width: calc(50% - 1em);
+    }
+}
