@@ -1,6 +1,18 @@
-html {
+body {
+    box-sizing: border-box;
+    padding: 20px 20px;
     font-size: 16px;
     font-family: sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+ul { 
+    padding: 0;
 }
 
 header {
@@ -16,58 +28,61 @@ header {
         50% {background-color: rgb(113, 168, 147);} 
         100% {background-color: rgb(173, 182, 94);}
     }
-}
-body {
-    box-sizing: border-box;
-    padding: 20px 20px;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
 
-section {
-    display: inline-block;
-}
 h2 {
     text-align: center;
     color: rgb(113, 168, 147);
 }
+
 h3 {
     color: rgb(140,146,172);
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
 
-
+/* here we condition the layout for a mobile version */
 #grid-floats .grid-item {
     box-sizing: border-box;
     float: left;
     width: calc(50% - 1em);
     margin: 1em 0.5em;
-    height: 600px;
-    border: 1em solid whitesmoke;
     text-align: center;
     list-style-type: none;
 }
 
+/* here we condition that the first product apper on the first line and other start 2 after 2*/
 #grid-floats .grid-item:nth-child(1) {
-    width: 100%;
+    width: calc(100% - 1em);
 }
 
-img {
-    width: 100%;
-}
-
-@media (min-width: 480px) {
-    #grid-floats .grid-item {
-        width: calc(calc(100% / 3) - 1em);
-        margin: 1em 0.5em;
+@media (max-width: 479px) {
+    #grid-floats .grid-item:nth-child(2n+2) {
+        clear: left;
     }
+}
+/* so the next block GRIDS WITH FLEXBOX starts at a new line */
+#grid-floats:after { 
+    content: "";
+    display: table;
+    clear: both;
+}
+/* here we condition layouts for tablets and laptops */
+@media (min-width: 480px) and (max-width: 767px) {
+    #grid-floats .grid-item {
+        width: calc(100% / 3 - 1em);
+    }
+
     #grid-floats .grid-item:nth-child(1),
     #grid-floats .grid-item:nth-child(2) {
         width: calc(50% - 1em);
     }
+
+    #grid-floats .grid-item:nth-child(3n+3) {
+        clear: left;
+    }
 }
 
 @media (min-width: 768px) {
@@ -75,50 +90,54 @@ img {
         width: calc(25% - 1em);
         margin: 1em 0.5em;
     }
-    #grid-floats .grid-item:nth-child(2) {
-        width: calc(25% - 1em);
-    }
     #grid-floats .grid-item:nth-child(1) {
         width: calc(50% - 1em);
     }
+    #grid-floats .grid-item:nth-child(2) {
+        width: calc(25% - 1em);
+    }
+    #grid-floats .grid-item:nth-child(4n+4) {
+        clear: left;
+    }
 }
 
+/* code for the FLEXBOX block */
 #grid-flex {
     display: flex;
-    flex-direction: flex-start;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
+    justify-content: flex-start;
 }
 
 #grid-flex .grid-item {
-    border: 1px solid rgb(140,146,172);
-    width: calc(50% - 1em);
+    flex-basis: calc(50% - 1em);
     margin: 1em 0.5em;
     text-align: center;
     list-style-type: none;
-    border: 1em solid whitesmoke;
 }
-
 #grid-flex .grid-item:nth-child(1) {
-    width: 100%;
+    flex-basis: 100%;
 }
 
 @media (min-width: 480px) {
     #grid-flex .grid-item {
-        width: calc(calc(100% / 3) - 1em);
+        flex-basis: calc(calc(100% / 3) - 1em);
         margin: 1em 0.5em;
     }
     #grid-flex .grid-item:nth-child(1),
     #grid-flex .grid-item:nth-child(2) {
-        width: calc(50% - 1em);
+        flex-basis: calc(50% - 1em);
     }
 }
 
 @media (min-width: 768px) {
     #grid-flex .grid-item {
-        width: calc(25% - 1em);
+        flex-basis: calc(25% - 1em);
         margin: 1em 0.5em;
     }
     #grid-flex .grid-item:nth-child(1) {
-        width: calc(50% - 1em);
+        flex-basis: calc(50% - 1em);
+    }
+    #grid-flex .grid-item:nth-child(2) {
+        flex-basis: calc(25% - 1em);
     }
 }
